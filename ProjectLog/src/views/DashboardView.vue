@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref, onMounted, computed} from 'vue'
+import {onMounted, computed} from 'vue'
 import {useProjectsStore} from '../store/projects'
 import ProjectList from "../components/ProjectList.vue";
 

@@ -46,11 +46,11 @@ export const useProjectsStore = defineStore('projects', {
                     this.projects.splice(i, 1)
         },
 
-        async addNote(projectId: number, note: Note) { /* ... */
+        async addNote(_projectId: number, _note: Note) { /* ... */
         },
-        async updateNote(projectId: number, noteId: number, updates: Partial<Note>) { /* ... */
+        async updateNote(_projectId: number, _noteId: number, _updates: Partial<Note>) { /* ... */
         },
-        async deleteNote(projectId: number, noteId: number) { /* ... */
+        async deleteNote(_projectId: number, _noteId: number) { /* ... */
         }
     }
 })

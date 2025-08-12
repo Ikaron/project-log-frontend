@@ -33,6 +33,9 @@ export default defineConfig(({ command, mode }) => {
         return {
             plugins: [vue(), tailwindcss()],
             envDir: './env',
+            define: {
+                API_OVERRIDE_URL: null
+            }
         }
     }
 })

@@ -5,6 +5,8 @@ import basicSsl from '@vitejs/plugin-basic-ssl'
 
 export default defineConfig(({ command, mode }) => {
 
+    console.log('API URL: ' + env.VITE_API_BASE_URL)
+
     const env = loadEnv(mode, process.cwd() + "/env", '')
     if (command === 'serve') {
         return {

@@ -6,8 +6,6 @@ import basicSsl from '@vitejs/plugin-basic-ssl'
 export default defineConfig(({ command, mode }) => {
 
     const env = loadEnv(mode, process.cwd() + "/env", '')
-    console.log(env)
-
     if (command === 'serve') {
         return {
             plugins: [vue(), tailwindcss(), basicSsl()],

@@ -9,4 +9,4 @@ interface ImportMeta {
     readonly env: ImportMetaEnv;
 }
 
-declare const API_BASE_URL: string;
+declare const API_OVERRIDE_URL: string | undefined;

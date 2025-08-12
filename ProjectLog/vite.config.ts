@@ -25,7 +25,7 @@ export default defineConfig(({ command, mode }) => {
                 port: 5173
             },
             define: {
-                API_BASE_URL: JSON.stringify('https://localhost:5173/api')
+                API_OVERRIDE_URL: JSON.stringify('https://localhost:5173/api')
             }
         }
     } else {
@@ -33,9 +33,6 @@ export default defineConfig(({ command, mode }) => {
         return {
             plugins: [vue(), tailwindcss()],
             envDir: './env',
-            define: {
-                API_BASE_URL: JSON.stringify(env.VITE_API_BASE_URL)
-            }
         }
     }
 })

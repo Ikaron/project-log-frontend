@@ -1,33 +1,43 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 
-export default defineConfig(({ command }) => {
+export default defineConfig(({ command, mode }) => {
+
+    const env = loadEnv(mode, process.cwd() + "/env", '')
+    console.log(env)
 
     if (command === 'serve') {
         return {
             plugins: [vue(), tailwindcss(), basicSsl()],
-            envDir: "./env",
+            envDir: './env',
             server: {
                 proxy: {
                     '/api': {
-                        // TODO: Load this from a .env file as well
-                        target: 'https://localhost:8081',
+                        target: env.VITE_API_PROXY_FROM_URL,
                         changeOrigin: true,
-                        secure: false
+                        secure: false,
+                        rewrite: str => str.replace("api/", "")
                     }
                 },
                 https: {
 
-                }
+                },
+                port: 5173
+            },
+            define: {
+                API_BASE_URL: JSON.stringify('https://localhost:5173/api')
             }
         }
     } else {
         // command === 'build'
         return {
             plugins: [vue(), tailwindcss()],
-            envDir: "./env"
+            envDir: './env',
+            define: {
+                API_BASE_URL: JSON.stringify(env.VITE_API_BASE_URL)
+            }
         }
     }
 })
